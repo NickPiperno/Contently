@@ -1,6 +1,6 @@
 version: 1
 applications:
-  - appRoot: packages/frontend
+  - appRoot: .
     frontend:
       phases:
         preBuild:
@@ -15,12 +15,4 @@ applications:
           - '**/*'
       cache:
         paths:
-          - node_modules/**/*
-          - packages/frontend/node_modules/**/*
-  - appRoot: packages/backend
-    backend:
-      phases:
-        build:
-          commands:
-            - npm run amplify-generate-outputs
-            - npm run amplify-push --yes 
+          - node_modules/**/* 
