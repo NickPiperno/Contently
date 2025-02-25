@@ -5,9 +5,8 @@ applications:
       phases:
         preBuild:
           commands:
-            - npm ci
-            - npm install -g npm@latest
-            - npm install --platform=linux --arch=x64 @rollup/rollup-linux-x64-gnu
+            - npm install
+            - npm install --no-save @rollup/rollup-linux-x64-gnu@4.34.8 @rollup/rollup-linux-arm64-gnu@4.34.8 @rollup/rollup-linux-x64-musl@4.34.8 @rollup/rollup-linux-arm-musleabihf@4.34.8 @rollup/rollup-linux-arm64-musl@4.34.8
         build:
           commands:
             - npm run build
@@ -23,5 +22,5 @@ applications:
       phases:
         build:
           commands:
-            - npm ci
+            - npm install
             - npm run amplify-push 
