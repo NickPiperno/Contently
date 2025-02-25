@@ -6,7 +6,7 @@ applications:
         preBuild:
           commands:
             - npm install
-            - npm install --no-save @rollup/rollup-linux-x64-gnu@4.34.8 @rollup/rollup-linux-arm64-gnu@4.34.8 @rollup/rollup-linux-x64-musl@4.34.8 @rollup/rollup-linux-arm-musleabihf@4.34.8 @rollup/rollup-linux-arm64-musl@4.34.8
+            - npm install --no-save @rollup/rollup-linux-x64-gnu@4.34.8 @rollup/rollup-linux-x64-musl@4.34.8
         build:
           commands:
             - npm run build
