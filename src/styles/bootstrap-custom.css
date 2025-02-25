@@ -1,0 +1,68 @@
+/* src/styles/bootstrap-custom.css */
+/* Bootstrap customization */
+
+/* Override Bootstrap's primary color with our theme color */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+/* Override Bootstrap's secondary color */
+.btn-secondary {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active {
+  background-color: var(--secondary-dark);
+  border-color: var(--secondary-dark);
+}
+
+/* Card customization */
+.card {
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Form controls */
+.form-control {
+  border-radius: var(--border-radius-md);
+  border-color: var(--neutral-300);
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(74, 144, 226, 0.25);
+}
+
+/* Navigation */
+.navbar {
+  background-color: var(--neutral-100);
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar-brand {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* Alerts */
+.alert-primary {
+  background-color: rgba(74, 144, 226, 0.1);
+  border-color: var(--primary-color);
+  color: var(--primary-dark);
+} 

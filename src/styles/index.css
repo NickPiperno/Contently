@@ -1,0 +1,10 @@
+/* src/styles/index.css */
+/* This file is imported in index.tsx */
+
+/* Import other style files */
+@import './globals.css';
+@import './theme.css';
+@import './bootstrap-custom.css';
+
+/* Additional global styles that aren't in globals.css */
+/* Note: body, code, and app-container styles are already in globals.css */ 
