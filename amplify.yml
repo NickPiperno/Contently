@@ -5,27 +5,22 @@ applications:
       phases:
         preBuild:
           commands:
-            - cd packages/frontend
             - npm install
             - npm install --no-save @rollup/rollup-linux-x64-gnu@4.34.8 @rollup/rollup-linux-x64-musl@4.34.8 @esbuild/linux-x64
-            - cd ../..
         build:
           commands:
-            - cd packages/frontend
             - npm run build
       artifacts:
-        baseDirectory: packages/frontend/dist
+        baseDirectory: dist
         files:
           - '**/*'
       cache:
         paths:
           - node_modules/**/*
-          - packages/frontend/node_modules/**/*
   - appRoot: packages/backend
     backend:
       phases:
         build:
           commands:
-            - cd packages/backend
             - npm install
             - npm run amplify-push 
