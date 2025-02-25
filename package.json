@@ -1,20 +1,19 @@
 {
   "name": "contently",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "start": "vite",
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "test": "vitest",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "amplify-pull": "amplify pull",
-    "amplify-push": "amplify push",
-    "amplify-generate-outputs": "amplify generate outputs",
-    "amplify-generate-forms": "amplify generate forms",
-    "amplify-generate-graphql": "amplify generate graphql-client-code",
-    "amplify-deploy": "amplify deploy"
+    "start": "npm run start --workspace=@contently/frontend",
+    "dev": "npm run dev --workspace=@contently/frontend",
+    "build": "npm run build --workspace=@contently/frontend",
+    "test": "npm run test --workspace=@contently/frontend",
+    "lint": "npm run lint --workspace=@contently/frontend",
+    "amplify-pull": "npm run amplify-pull --workspace=@contently/backend",
+    "amplify-push": "npm run amplify-push --workspace=@contently/backend",
+    "amplify-deploy": "npm run amplify-deploy --workspace=@contently/backend"
   },
   "keywords": [],
   "author": "",
@@ -54,7 +53,7 @@
   "directories": {
     "doc": "docs"
   },
-  "description": "",
+  "description": "AI-powered content strategy platform",
   "browserslist": {
     "production": [
       ">0.2%",

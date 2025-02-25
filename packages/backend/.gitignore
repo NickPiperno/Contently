@@ -12,26 +12,6 @@ node_modules
 .pnp
 .pnp.js
 
-# Testing
-coverage
-*.lcov
-
-# Production
-build
-dist
-dist-ssr
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
 # Environment variables
 .env
 .env.local
@@ -56,4 +36,4 @@ amplifyconfiguration.dart
 amplify-build-config.json
 amplify-gradle-config.json
 amplifytools.xcconfig
-.secret-*
+.secret-* 

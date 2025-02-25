@@ -1,0 +1,22 @@
+{
+  "name": "@contently/backend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "amplify-pull": "amplify pull",
+    "amplify-push": "amplify push",
+    "amplify-generate-outputs": "amplify generate outputs",
+    "amplify-generate-forms": "amplify generate forms",
+    "amplify-generate-graphql": "amplify generate graphql-client-code",
+    "amplify-deploy": "amplify deploy"
+  },
+  "devDependencies": {
+    "@aws-amplify/backend": "^1.14.1",
+    "@aws-amplify/backend-cli": "^1.4.11",
+    "aws-cdk": "^2.1000.3",
+    "aws-cdk-lib": "^2.180.0",
+    "constructs": "^10.4.2",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3"
+  }
+} 
