@@ -18,7 +18,7 @@ This document references our finalized choices in [tech-stack.md](mdc:docs/proje
   - Utilize TypeScript for static type checking.  
   - Define and maintain clear interfaces and types for props, state, and API responses.
 - **State Management:**  
-  - Use React’s Context API or state management libraries (like Redux) where necessary.  
+  - Use React's Context API or state management libraries (like Redux) where necessary.  
   - Keep local component state minimal and prefer lifting state up only when needed.
 - **Code Organization:**  
   - Follow a consistent folder structure (e.g., components, hooks, services, assets).  
@@ -62,7 +62,7 @@ This document references our finalized choices in [tech-stack.md](mdc:docs/proje
   - Monitor memory and CPU usage to avoid throttling.  
   - Test functions under load to ensure scalability.
 - **API Gateway Limits:**  
-  - Familiarize yourself with API Gateway’s rate limits and payload size restrictions.
+  - Familiarize yourself with API Gateway's rate limits and payload size restrictions.
 
 ---
 
@@ -70,7 +70,7 @@ This document references our finalized choices in [tech-stack.md](mdc:docs/proje
 
 ### Best Practices
 - **Integration:**  
-  - Use AWS Bedrock’s managed services to integrate AI models seamlessly.  
+  - Use AWS Bedrock's managed services to integrate AI models seamlessly.  
   - Ensure robust error handling and fallback mechanisms when calling AI APIs.
 - **Model Selection:**  
   - Choose models that best fit the specific content strategy and data analysis requirements.
@@ -117,7 +117,7 @@ This document references our finalized choices in [tech-stack.md](mdc:docs/proje
 
 ### Best Practices
 - **Integrated Workflow:**  
-  - Use Amplify’s CLI and console for streamlined deployments across frontend and backend.
+  - Use Amplify's CLI and console for streamlined deployments across frontend and backend.
   - Set up environments for development, staging, and production.
 - **Automated Testing & Builds:**  
   - Integrate automated tests into your CI/CD pipeline.
@@ -125,7 +125,7 @@ This document references our finalized choices in [tech-stack.md](mdc:docs/proje
 - **Monitoring & Rollbacks:**  
   - Monitor deployments for errors and set up automatic rollback strategies.
 - **Configuration Management:**  
-  - Securely manage environment variables and secrets through AWS Secrets Manager or Amplify’s configuration.
+  - Securely manage environment variables and secrets through AWS Secrets Manager or Amplify's configuration.
 
 ### Limitations & Pitfalls
 - **Vendor Lock-In:**  
@@ -137,25 +137,25 @@ This document references our finalized choices in [tech-stack.md](mdc:docs/proje
 
 ---
 
-## 6. Authentication: AWS Cognito
+## 6. Authentication: Auth0
 
 ### Best Practices
 - **User Management:**  
-  - Use Cognito for handling user sign-up, sign-in, and multi-factor authentication.
-  - Leverage Cognito’s built-in support for social identity providers if needed.
+  - Use Auth0 for handling user sign-up, sign-in, and multi-factor authentication.
+  - Leverage Auth0's built-in support for social identity providers if needed.
 - **Security:**  
   - Configure strong password policies and secure token storage.
-  - Use Cognito triggers and Lambda functions for custom authentication flows or validation.
+  - Use Auth0 Rules and Actions for custom authentication flows or validation.
 - **Integration:**  
-  - Integrate with AWS Amplify for seamless front-end authentication management.
+  - Integrate with React using the Auth0 React SDK for seamless front-end authentication management.
 
 ### Limitations & Pitfalls
 - **Complexity in Customization:**  
-  - Customizing Cognito workflows can be challenging and may require additional Lambda functions.
-- **Documentation Gaps:**  
-  - Some edge-case scenarios might not be well-documented; expect a learning curve.
+  - Advanced customization of Auth0 workflows may require understanding of Auth0 Rules, Actions, and Hooks.
 - **Token Management:**  
   - Ensure proper management of tokens and handle token expiration gracefully on the client side.
+- **Cost Considerations:**  
+  - Monitor usage as Auth0 pricing is based on active users and may increase with scale.
 
 ---
 

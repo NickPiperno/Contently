@@ -83,14 +83,14 @@ This document summarizes our chosen technology stack, including our selections f
 ## 6. Authentication
 
 **Technology:**  
-- **AWS Cognito**
+- **Auth0**
 
 **Description:**  
-- AWS Cognito handles user authentication, authorization, and user management. It integrates well with AWS Amplify and provides secure, scalable identity management.
+- Auth0 handles user authentication, authorization, and user management. It provides a flexible, secure identity platform with extensive customization options and integrations.
 
 **Strengths:**  
 - Robust user authentication and authorization  
-- Seamless integration with the AWS ecosystem  
+- Extensive integration options with various platforms and social providers  
 - Supports social identity providers and multi-factor authentication
 
 ---
@@ -118,7 +118,7 @@ This document summarizes our chosen technology stack, including our selections f
 - **AI Implementation:** AWS Bedrock  
 - **Database:** AWS DynamoDB  
 - **DevOps & CI/CD:** AWS Amplify  
-- **Authentication:** AWS Cognito  
+- **Authentication:** Auth0  
 - **UI Components & Styling:** Bootstrap (via React-Bootstrap)
 
 These choices are designed to provide a cohesive, scalable, and maintainable solution that leverages the strengths of the AWS ecosystem while delivering a modern, interactive user experience. Each component has been chosen for its ease of use, compatibility with our overall goals, and strong support/documentation.

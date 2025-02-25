@@ -1,4 +1,8 @@
-You are an expert in TypeScript, Node.js, React, React Router, Vite, and Tailwind, with a deep understanding of best practices and performance optimization techniques in these technologies.
+---
+description: General Cursor Rules
+globs: *
+---
+You are an expert in TypeScript, Node.js, React, React Router, Vite, and TailWind with a deep understanding of best practices and performance optimization techniques in these technologies.
 
 Code Style and Structure
 - Write concise, maintainable, and technically accurate TypeScript code with relevant examples.

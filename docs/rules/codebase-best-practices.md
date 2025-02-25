@@ -43,126 +43,88 @@ This document consolidates principles from [@tech-stack.md](../project-info/tech
 
 ## 3. File Structure
 
-Below is a recommended file tree illustrating how we can organize our **React with TypeScript** frontend (using **React Router DOM**), **AWS Lambda** serverless backend, and **AI** integrations. Adapt as needed over time, but keep the structure **modular** and **easy to navigate**.
+Below is our current file structure for the Contently project, organized as a monorepo with separate packages for frontend and backend:
 
 ```
 root/
-├─ frontend/
-│ ├─ src/
-│ │ ├─ components/
-│ │ │ ├─ ContentStrategyCalendar/
-│ │ │ │ ├─ index.tsx                    // Main component file
-│ │ │ │ ├─ CalendarItem.tsx             // Sub-component
-│ │ │ │ └─ __tests__/                   // Component-specific tests
-│ │ │ │   └─ ContentStrategyCalendar.test.tsx
-│ │ │ ├─ ContentInsightsPanel/
-│ │ │ │ ├─ index.tsx
-│ │ │ │ └─ __tests__/
-│ │ │ └─ ... (other UI components)
-│ │ ├─ pages/
-│ │ │ ├─ HomePage.tsx                   // Main dashboard/landing
-│ │ │ ├─ AuthPage.tsx                   // Sign in/up logic (AWS Cognito)
-│ │ │ └─ ... (other page-level components)
-│ │ ├─ hooks/
-│ │ │ ├─ useContentAnalysis.ts          // Hook for calling AI analysis
-│ │ │ └─ useFetchData.ts                // Generic data fetching hook
-│ │ ├─ services/
-│ │ │ └─ api.ts                         // Makes calls to AWS APIs (Lambda, etc.)
-│ │ ├─ routes/
-│ │ │ └─ index.tsx                      // React Router DOM configuration
-│ │ ├─ styles/
-│ │ │ ├─ bootstrap-custom.css           // Bootstrap customizations
-│ │ │ ├─ globals.css                    // Global styling
-│ │ │ └─ theme.css                      // Theme variables and overrides
-│ │ └─ index.tsx                        // Frontend entry point
-│ ├─ public/
-│ │ └─ ... (static assets if needed)
-│ ├─ package.json
-│ └─ tsconfig.json
-│
-├─ backend/
-│ ├─ lambdas/
-│ │ ├─ ingestContent/
-│ │ │ ├─ handler.ts                     // AWS Lambda for ingesting & storing content
-│ │ │ └─ ... (tests, utils, etc.)
-│ │ ├─ generateStrategy/
-│ │ │ ├─ handler.ts                     // AWS Lambda calling AWS Bedrock for AI suggestions
-│ │ │ └─ ... (tests, utils, etc.)
-│ │ └─ ... (other Lambdas)
-│ ├─ mocks/                             // Optional folder for local testing
-│ ├─ package.json
-│ └─ tsconfig.json
-│
-├─ ai/
-│ ├─ prompts/                           // Bedrock prompt templates
-│ │ ├─ content-analysis.json            // Prompt for content analysis
-│ │ ├─ strategy-generation.json         // Prompt for strategy generation
-│ │ └─ seo-optimization.json            // Prompt for SEO recommendations
-│ ├─ configs/                           // AI service configurations
-│ │ └─ bedrock-config.json              // AWS Bedrock configuration
-│ └─ utils/                             // AI-specific utility functions
-│   ├─ prompt-formatter.ts              // Formats data for AI prompts
-│   └─ response-parser.ts               // Parses AI responses
-│
-├─ infrastructure/
-│ ├─ amplify/                           // AWS Amplify config & scripts
-│ ├─ templates/                         // CloudFormation or serverless templates
-│ └─ pipeline/                          // CI/CD pipeline definitions
+├─ packages/
+│ ├─ frontend/
+│ │ ├─ src/
+│ │ │ ├─ components/          // Reusable UI components
+│ │ │ ├─ contexts/            // React context providers
+│ │ │ ├─ hooks/               // Custom React hooks
+│ │ │ ├─ pages/               // Page-level components
+│ │ │ ├─ routes/              // React Router configuration
+│ │ │ ├─ services/            // API and service integrations
+│ │ │ ├─ styles/              // CSS and styling files
+│ │ │ ├─ types/               // TypeScript type definitions
+│ │ │ ├─ App.tsx              // Main application component
+│ │ │ ├─ App.test.tsx         // Tests for App component
+│ │ │ ├─ index.tsx            // Application entry point
+│ │ │ ├─ setupTests.ts        // Test configuration
+│ │ │ └─ vite-env.d.ts        // Vite environment types
+│ │ ├─ public/                // Static assets
+│ │ ├─ .env                   // Environment variables (not committed)
+│ │ ├─ .env.example           // Example environment variables
+│ │ ├─ .eslintrc.js           // ESLint configuration
+│ │ ├─ .gitignore             // Git ignore rules
+│ │ ├─ index.html             // HTML entry point
+│ │ ├─ package.json           // Frontend dependencies
+│ │ ├─ tsconfig.json          // TypeScript configuration
+│ │ ├─ vite.config.ts         // Vite configuration
+│ │ └─ vitest.config.ts       // Vitest configuration
+│ │
+│ └─ backend/
+│   ├─ amplify/               // AWS Amplify configuration
+│   │ ├─ auth/                // Authentication resources
+│   │ │ └─ resource.ts        // Auth resource definition
+│   │ ├─ data/                // Data models and storage
+│   │ │ └─ resource.ts        // Data resource definition
+│   │ ├─ backend.ts           // Main backend definition
+│   │ ├─ package.json         // Amplify dependencies
+│   │ └─ tsconfig.json        // TypeScript configuration
+│   ├─ .gitignore             // Git ignore rules
+│   └─ package.json           // Backend dependencies
 │
 ├─ docs/
-│ ├─ project-info/
-│ │ ├─ tech-stack.md                    // Tech stack reference
-│ │ ├─ project-overview.md              // High-level overview
-│ │ └─ user-flow.md                     // User journey and features
-│ └─ rules/
-│   ├─ codebase-best-practices.md       // (This file)
-│   ├─ theme-rules.md
-│   ├─ ui-rules.md
-│   └─ ...
+│ ├─ project-info/            // Project documentation
+│ ├─ rules/                   // Coding standards and guidelines
+│ ├─ workflow-templates/      // Templates for workflows
+│ ├─ prompts/                 // AI prompt templates
+│ ├─ active-workflows/        // Active project workflows
+│ ├─ auth0-amplify-deployment.md // Deployment guide
+│ └─ new-project-setup.md     // Project setup instructions
 │
-├─ tests/
-│ ├─ integration/                       // Cross-component/service tests
-│ │ └─ ai-integration/                  // Tests for AI service integration
-│ │   ├─ bedrock-api.test.ts            // Tests for Bedrock API calls
-│ │   └─ content-analysis.test.ts       // Tests for content analysis flow
-│ └─ e2e/                               // End-to-end tests
-│   └─ content-strategy-flow.test.ts    // Complete user flow tests
+├─ checklists/                // Project phase checklists
 │
-├─ .env.example
-├─ package.json
-├─ tsconfig.json
-└─ README.md
+├─ amplify.yml                // Amplify build configuration
+├─ DEPLOYMENT.md              // Deployment instructions
+├─ .gitignore                 // Git ignore rules
+├─ package.json               // Root dependencies
+├─ package-lock.json          // Dependency lock file
+└─ README.md                  // Project overview
 ```
 
 ### Folder Breakdown
 
-1. **frontend/**  
+1. **packages/frontend/**  
    - Houses all React + TypeScript code.  
    - Uses **React Router DOM** for navigation.
    - **React-Bootstrap** for UI components.
-   - Component folders include their own tests.
+   - Organized into components, contexts, hooks, pages, and services.
 
-2. **backend/**  
-   - Contains AWS Lambda functions and related code.  
-   - Each Lambda resides in its own folder for easy maintenance.
+2. **packages/backend/**  
+   - Contains AWS Amplify configuration for backend resources.
+   - Defines authentication (Auth0) and data (DynamoDB) resources.
+   - Uses TypeScript for infrastructure as code.
 
-3. **ai/**  
-   - NEW: Dedicated directory for AI-related configurations and utilities.
-   - Stores prompt templates, Bedrock configurations, and AI-specific utilities.
-   - Separates AI concerns from general application logic.
+3. **docs/**  
+   - Centralizes documentation files, including project information and rule sets.
+   - Contains workflow templates and active workflows.
+   - Includes deployment guides and setup instructions.
 
-4. **infrastructure/**  
-   - Holds AWS Amplify configurations, CloudFormation templates, and pipeline scripts.  
-   - Facilitates DevOps, CI/CD, and environment setups.
-
-5. **docs/**  
-   - Centralizes documentation files, including project information and rule sets.  
-   - This fosters a single source of truth.
-
-6. **tests/**  
-   - Contains integration and E2E tests.
-   - Component-specific tests live alongside their components.
-   - AI-specific integration tests have their own dedicated section.
+4. **checklists/**  
+   - Contains project phase checklists to track progress.
 
 ---
 
@@ -206,7 +168,7 @@ root/
      ```
 
 4. **AWS & AI Integration**  
-   - Adhere to [@tech-stack.md](../project-info/tech-stack.md) for best practices in calling AWS Lambda, DynamoDB, Cognito, and Bedrock.
+   - Adhere to [@tech-stack.md](../project-info/tech-stack.md) for best practices in calling AWS Lambda, DynamoDB, Auth0, and Bedrock.
    - Keep environment variables in `.env` or Amplify configs, **never** commit secrets.
    - Use the `/ai` directory for all AI-related configurations and utilities.
 

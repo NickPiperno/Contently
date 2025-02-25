@@ -77,8 +77,9 @@ This guide provides step-by-step instructions for deploying the Contently applic
 If you're not using the Amplify CLI to generate configuration files, you'll need to set these environment variables in the Amplify Console:
 
 - `VITE_AWS_REGION`: The AWS region (e.g., us-east-1)
-- `VITE_USER_POOL_ID`: Your Cognito User Pool ID
-- `VITE_USER_POOL_WEB_CLIENT_ID`: Your Cognito User Pool Web Client ID
+- `VITE_AUTH0_DOMAIN`: Your Auth0 domain
+- `VITE_AUTH0_CLIENT_ID`: Your Auth0 client ID
+- `VITE_AUTH0_CALLBACK_URL`: Your Auth0 callback URL
 
 ## Troubleshooting
 
@@ -103,7 +104,7 @@ If you encounter build errors:
 
 If authentication isn't working:
 
-1. Verify that your Cognito User Pool is properly configured
+1. Verify that your Auth0 application is properly configured
 2. Check that the environment variables are correctly set
 3. Ensure that the Amplify configuration in `src/index.tsx` is correct
 
@@ -123,5 +124,5 @@ To set up a custom domain:
 ## Additional Resources
 
 - [AWS Amplify Documentation](https://docs.amplify.aws/)
-- [AWS Cognito Documentation](https://docs.aws.amazon.com/cognito/)
+- [Auth0 Documentation](https://auth0.com/docs/)
 - [Vite Documentation](https://vitejs.dev/guide/) 

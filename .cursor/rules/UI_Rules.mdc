@@ -15,7 +15,7 @@ This document details the interaction guidelines, design principles for building
   - Maintain consistency in margins, paddings, font sizes, and color usage.
   
 - **Responsiveness:**  
-  - Components must adapt seamlessly across different screen sizes using Bootstrap’s grid system.
+  - Components must adapt seamlessly across different screen sizes using Bootstrap's grid system.
   - Ensure touch-friendly designs for mobile and tablet users.
 
 - **Accessibility:**  
@@ -32,12 +32,12 @@ This document details the interaction guidelines, design principles for building
 - **Bootstrap Integration:**  
   - Utilize React-Bootstrap for standardized UI components (navbars, modals, forms, cards, etc.).
   - Override Bootstrap defaults using SASS variables or custom CSS as needed to align with our theme.
-  - Leverage Bootstrap’s utility classes for spacing and responsive design.
+  - Leverage Bootstrap's utility classes for spacing and responsive design.
 
 - **Calendar Component Integration:**  
   - Select a calendar component (e.g., React Big Calendar or FullCalendar React Wrapper) that can be styled to match Bootstrap.
   - Ensure the calendar provides interactive features such as drag-and-drop, event modals, and responsive layouts.
-  - Customize the calendar’s appearance to adhere to our theme (e.g., colors, typography).
+  - Customize the calendar's appearance to adhere to our theme (e.g., colors, typography).
 
 ## Interaction Guidelines
 
@@ -63,8 +63,8 @@ This document details the interaction guidelines, design principles for building
   - All frontend API calls (via AWS API Gateway/Lambda) should follow a consistent pattern for error handling and loading states.
   - Use standardized service layers or hooks in React to encapsulate API communication.
 
-- **Authentication with AWS Cognito:**  
-  - Integrate AWS Cognito seamlessly for user authentication.
+- **Authentication with Auth0:**  
+  - Integrate Auth0 seamlessly for user authentication.
   - Ensure login, registration, and user session management components provide clear visual cues and error states.
   
 - **Data-Driven Components:**  

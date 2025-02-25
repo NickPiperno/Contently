@@ -8,7 +8,10 @@
     "amplify-generate-outputs": "amplify generate outputs",
     "amplify-generate-forms": "amplify generate forms",
     "amplify-generate-graphql": "amplify generate graphql-client-code",
-    "amplify-deploy": "amplify deploy"
+    "amplify-deploy": "amplify deploy",
+    "cdk-synth": "npx tsx cdk-app.ts",
+    "cdk-deploy": "npx tsx cdk-app.ts && cdk deploy",
+    "deploy-all": "npm run amplify-deploy && npm run cdk-deploy"
   },
   "devDependencies": {
     "@aws-amplify/backend": "^1.14.1",

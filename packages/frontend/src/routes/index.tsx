@@ -11,6 +11,8 @@ import LandingPage from '../pages/LandingPage';
 import { AuthProvider, useAuth } from '../contexts/AuthContext';
 import LoadingSpinner from '../components/LoadingSpinner';
 import MainLayout from '../components/MainLayout';
+import PageTransition from '../components/PageTransition';
+import '../styles/transitions.css';
 
 /**
  * Protected route component that redirects to home if not authenticated
@@ -37,8 +39,17 @@ const AppRoutes: React.FC = () => {
   return (
     <Routes>
       {/* Public routes */}
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/auth" element={<AuthPage />} />
+      <Route path="/" element={
+        <PageTransition>
+          <LandingPage />
+        </PageTransition>
+      } />
+      
+      <Route path="/auth" element={
+        <PageTransition>
+          <AuthPage />
+        </PageTransition>
+      } />
       
       {/* Protected routes */}
       <Route 
@@ -46,7 +57,9 @@ const AppRoutes: React.FC = () => {
         element={
           <ProtectedRoute>
             <MainLayout>
-              <App />
+              <PageTransition>
+                <App />
+              </PageTransition>
             </MainLayout>
           </ProtectedRoute>
         } 
@@ -57,7 +70,9 @@ const AppRoutes: React.FC = () => {
         element={
           <ProtectedRoute>
             <MainLayout>
-              <CalendarPage />
+              <PageTransition>
+                <CalendarPage />
+              </PageTransition>
             </MainLayout>
           </ProtectedRoute>
         } 
@@ -68,7 +83,9 @@ const AppRoutes: React.FC = () => {
         element={
           <ProtectedRoute>
             <MainLayout>
-              <EditorPage />
+              <PageTransition>
+                <EditorPage />
+              </PageTransition>
             </MainLayout>
           </ProtectedRoute>
         } 
@@ -79,7 +96,9 @@ const AppRoutes: React.FC = () => {
         element={
           <ProtectedRoute>
             <MainLayout>
-              <SettingsPage />
+              <PageTransition>
+                <SettingsPage />
+              </PageTransition>
             </MainLayout>
           </ProtectedRoute>
         } 
