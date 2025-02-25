@@ -1,17 +1,31 @@
 /* src/styles/bootstrap-custom.css */
-/* Bootstrap customization */
+/* Bootstrap customization with Contently color palette */
 
-/* Override Bootstrap's primary color with our theme color */
+/* Override Bootstrap's primary color with our Contently teal */
 .btn-primary {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
+  background-color: var(--contently-primary);
+  border-color: var(--contently-primary);
 }
 
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active {
-  background-color: var(--primary-dark);
-  border-color: var(--primary-dark);
+  background-color: var(--contently-secondary);
+  border-color: var(--contently-secondary);
+}
+
+/* Override Bootstrap's outline primary */
+.btn-outline-primary {
+  color: var(--contently-primary);
+  border-color: var(--contently-primary);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active {
+  background-color: var(--contently-primary);
+  border-color: var(--contently-primary);
+  color: white;
 }
 
 /* Override Bootstrap's secondary color */
@@ -27,11 +41,21 @@
   border-color: var(--secondary-dark);
 }
 
+/* Text colors */
+.text-primary {
+  color: var(--contently-primary) !important;
+}
+
+.bg-primary {
+  background-color: var(--contently-primary) !important;
+}
+
 /* Card customization */
 .card {
   border-radius: var(--border-radius-md);
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  border-color: var(--neutral-300);
 }
 
 .card:hover {
@@ -45,8 +69,8 @@
 }
 
 .form-control:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 0.2rem rgba(74, 144, 226, 0.25);
+  border-color: var(--contently-primary);
+  box-shadow: 0 0 0 0.2rem rgba(0, 165, 181, 0.25);
 }
 
 /* Navigation */
@@ -56,13 +80,48 @@
 }
 
 .navbar-brand {
-  color: var(--primary-color);
+  color: var(--contently-primary);
   font-weight: bold;
+}
+
+.nav-link {
+  color: var(--contently-text);
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--contently-primary);
+}
+
+.nav-link.active {
+  color: var(--contently-primary);
+  font-weight: 600;
 }
 
 /* Alerts */
 .alert-primary {
-  background-color: rgba(74, 144, 226, 0.1);
-  border-color: var(--primary-color);
-  color: var(--primary-dark);
+  background-color: rgba(0, 165, 181, 0.1);
+  border-color: var(--contently-primary);
+  color: var(--contently-dark);
+}
+
+/* Badges */
+.badge.bg-primary {
+  background-color: var(--contently-primary) !important;
+}
+
+.badge.bg-secondary {
+  background-color: var(--secondary-color) !important;
+}
+
+.badge.bg-success {
+  background-color: #28a745 !important;
+}
+
+.badge.bg-warning {
+  background-color: var(--contently-warning) !important;
+}
+
+.badge.bg-info {
+  background-color: var(--contently-accent) !important;
 } 

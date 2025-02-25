@@ -1,0 +1,155 @@
+/* packages/frontend/src/styles/landing-page.css */
+/* Styles for the landing page component */
+
+/* Color palette based on Contently logo */
+:root {
+  --contently-primary: #00A5B5; /* Teal blue from logo */
+  --contently-secondary: #0082A3; /* Darker teal for depth */
+  --contently-accent: #00C4D6; /* Lighter teal for accents */
+  --contently-dark: #004A5B; /* Very dark teal for text */
+  --contently-light: #E6F7F9; /* Very light teal for backgrounds */
+  --contently-gray: #F5F7F9; /* Light gray for sections */
+  --contently-text: #2C3E50; /* Dark slate for text */
+  --contently-warning: #FFB74D; /* Warm orange for highlights/stars */
+}
+
+/* Card hover effects */
+.hover-shadow:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+.transition {
+  transition: all 0.3s ease;
+}
+
+/* Hero section styles */
+.hero-section {
+  background: linear-gradient(135deg, var(--contently-primary) 0%, var(--contently-secondary) 100%);
+  padding: 4rem 0;
+}
+
+/* Feature cards */
+.feature-icon {
+  color: var(--contently-primary);
+  font-size: 3.5rem;
+}
+
+.feature-card {
+  border-color: transparent;
+  background-color: white;
+}
+
+.feature-card:hover {
+  border-color: var(--contently-accent);
+}
+
+.feature-title {
+  color: var(--contently-dark);
+}
+
+/* Testimonial cards */
+.testimonial-card {
+  border: none;
+  border-radius: 0.5rem;
+  background-color: white;
+}
+
+.testimonial-card:hover {
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.1)!important;
+}
+
+.testimonial-avatar {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--contently-primary);
+}
+
+.testimonial-stars {
+  color: var(--contently-warning);
+}
+
+.testimonial-section {
+  background-color: var(--contently-gray);
+}
+
+/* CTA section */
+.cta-section {
+  background: linear-gradient(135deg, var(--contently-primary) 0%, var(--contently-secondary) 100%);
+  padding: 3rem 0;
+}
+
+.cta-button {
+  background-color: white;
+  color: var(--contently-primary);
+  border: none;
+  font-weight: 600;
+}
+
+.cta-button:hover {
+  background-color: var(--contently-light);
+  color: var(--contently-dark);
+}
+
+/* Footer logo */
+.footer-logo {
+  filter: brightness(0) invert(1);
+  height: 30px;
+}
+
+/* Sticky header */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: white;
+}
+
+/* Typography */
+.landing-page h1, 
+.landing-page h2, 
+.landing-page h3, 
+.landing-page h4, 
+.landing-page h5, 
+.landing-page h6 {
+  color: var(--contently-dark);
+}
+
+.landing-page .text-primary {
+  color: var(--contently-primary) !important;
+}
+
+.landing-page .bg-primary {
+  background-color: var(--contently-primary) !important;
+}
+
+.landing-page .btn-primary {
+  background-color: var(--contently-primary);
+  border-color: var(--contently-primary);
+}
+
+.landing-page .btn-primary:hover {
+  background-color: var(--contently-secondary);
+  border-color: var(--contently-secondary);
+}
+
+.landing-page .btn-outline-primary {
+  border-color: var(--contently-primary);
+  color: var(--contently-primary);
+}
+
+.landing-page .btn-outline-primary:hover {
+  background-color: var(--contently-primary);
+  color: white;
+}
+
+/* Hero section text */
+.hero-section h1,
+.hero-section p,
+.cta-section h2,
+.cta-section p {
+  color: white;
+} 
