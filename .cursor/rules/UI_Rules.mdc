@@ -1,0 +1,88 @@
+---
+description: UI Components & Interaction Guidelines
+globs: *
+---
+# UI Rules
+
+This document details the interaction guidelines, design principles for building UI components, and relevant integrations with our chosen tech stack. It serves as a reference for developers to ensure consistency and maintainability across the application.
+
+---
+
+## General UI Principles
+
+- **Consistency & Predictability:**  
+  - All UI components should follow the established theme guidelines.
+  - Maintain consistency in margins, paddings, font sizes, and color usage.
+  
+- **Responsiveness:**  
+  - Components must adapt seamlessly across different screen sizes using Bootstrap’s grid system.
+  - Ensure touch-friendly designs for mobile and tablet users.
+
+- **Accessibility:**  
+  - Use semantic HTML and ARIA roles where appropriate.
+  - Ensure all interactive elements have clear focus states and accessible labels.
+
+## Component Design & Implementation
+
+- **React Components with TypeScript:**  
+  - Write modular, reusable components that adhere to a clear separation of concerns.
+  - Define prop types and interfaces to enforce type safety.
+  - Use state management (via React Context or Redux) judiciously to keep components decoupled.
+
+- **Bootstrap Integration:**  
+  - Utilize React-Bootstrap for standardized UI components (navbars, modals, forms, cards, etc.).
+  - Override Bootstrap defaults using SASS variables or custom CSS as needed to align with our theme.
+  - Leverage Bootstrap’s utility classes for spacing and responsive design.
+
+- **Calendar Component Integration:**  
+  - Select a calendar component (e.g., React Big Calendar or FullCalendar React Wrapper) that can be styled to match Bootstrap.
+  - Ensure the calendar provides interactive features such as drag-and-drop, event modals, and responsive layouts.
+  - Customize the calendar’s appearance to adhere to our theme (e.g., colors, typography).
+
+## Interaction Guidelines
+
+- **User Feedback:**  
+  - Provide immediate visual feedback for user actions (button clicks, form submissions, etc.) using transitions and hover effects.
+  - Use animations sparingly to enhance usability without distracting from content.
+
+- **Navigation:**  
+  - Design clear, hierarchical navigation with a sticky header and dropdown menus where necessary.
+  - Ensure that navigation elements are easily discoverable and accessible.
+
+- **Forms & Inputs:**  
+  - Standardize form input styling and validations.
+  - Use inline validations and clear error messages to improve form usability.
+  
+- **Loading & Error States:**  
+  - Design consistent loading indicators and error messages that follow our theme.
+  - Ensure that error states are informative and guide users toward recovery actions.
+
+## Tie-Ins with Backend & AWS Services
+
+- **API Integration:**  
+  - All frontend API calls (via AWS API Gateway/Lambda) should follow a consistent pattern for error handling and loading states.
+  - Use standardized service layers or hooks in React to encapsulate API communication.
+
+- **Authentication with AWS Cognito:**  
+  - Integrate AWS Cognito seamlessly for user authentication.
+  - Ensure login, registration, and user session management components provide clear visual cues and error states.
+  
+- **Data-Driven Components:**  
+  - UI components that display dynamic content (e.g., calendar events, reports) should be built to handle asynchronous data from DynamoDB via Lambda.
+  - Ensure that data fetching, caching, and error handling are implemented in a manner consistent with our overall app architecture.
+
+## Common Pitfalls & Considerations
+
+- **Over-Customization:**  
+  - Avoid excessive overriding of Bootstrap defaults which can lead to maintenance challenges.
+- **Performance:**  
+  - Optimize component re-renders with memoization where necessary.
+  - Monitor component performance when integrating third-party libraries (especially interactive calendars).
+- **Cross-Component Consistency:**  
+  - Regularly review component implementations to ensure adherence to theme and interaction guidelines.
+- **Error Handling:**  
+  - Implement robust error handling at both the component and service levels to provide a resilient user experience.
+
+---
+
+By adhering to these guidelines, we ensure that our UI components not only reflect our chosen visual theme but also integrate smoothly with our backend services, providing a cohesive and engaging user experience.

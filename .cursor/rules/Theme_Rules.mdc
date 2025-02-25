@@ -1,0 +1,62 @@
+---
+description: Theme Guidelines
+globs: *
+---
+# Theme Guidelines
+
+This document defines the visual theme for our application. It outlines the design principles, color palette, typography, and overall aesthetics inspired by our reference (e.g., Contently's clean and modern approach).
+
+## Visual Style
+
+- **Clean & Modern:**  
+  - Emphasize ample white space, minimal clutter, and a focus on clear, concise presentation.
+  - Use high-quality imagery and well-considered layouts that guide the user's attention naturally.
+
+- **Consistent Branding:**  
+  - Establish a consistent visual language that aligns with our brand identity.
+  - Incorporate our chosen brand accent colors throughout the UI, ensuring that call-to-action (CTA) elements and interactive components stand out.
+
+## Color Palette
+
+- **Neutral Base:**  
+  - Primary backgrounds and content areas should use neutral colors (whites, light grays) to create a clean canvas.
+- **Accent Colors:**  
+  - Use bold and contrasting colors for CTAs, links, and key interactive elements.
+  - Ensure sufficient contrast for accessibility.
+
+## Typography
+
+- **Headlines:**  
+  - Use large, bold sans-serif fonts for headlines to ensure clarity and emphasis.
+- **Body Text:**  
+  - Employ a readable sans-serif or modern serif font for body copy.
+  - Maintain consistent line heights and spacing for readability.
+- **Hierarchy:**  
+  - Establish a clear typographic hierarchy (e.g., H1, H2, H3, etc.) to organize information logically.
+
+## Imagery & Iconography
+
+- **High-Quality Imagery:**  
+  - Use professional photography or custom illustrations that support the content.
+- **Icons:**  
+  - Utilize a consistent icon set that is modern, simple, and aligns with the overall design language.
+  - Icons should be used to reinforce functionality and aid in navigation.
+
+## Layout & Spacing
+
+- **Grid System:**  
+  - Follow a responsive grid layout, leveraging Bootstrap’s grid system to ensure consistency across devices.
+- **Spacing:**  
+  - Use generous margins and paddings to prevent overcrowding.
+  - Maintain consistency in spacing across similar components.
+
+## Design Principles
+
+- **Simplicity:**  
+  - Prioritize a straightforward, intuitive design that minimizes cognitive load.
+- **Accessibility:**  
+  - Ensure all color contrasts, font sizes, and interactive elements meet accessibility standards (WCAG).
+- **Consistency:**  
+  - Keep design elements consistent throughout the application to build familiarity and ease-of-use.
+- **Feedback:**  
+  - Provide clear visual feedback on interactions (e.g., hover states, active states) to guide user behavior.

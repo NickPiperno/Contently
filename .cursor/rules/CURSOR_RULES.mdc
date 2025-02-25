@@ -1,0 +1,438 @@
+You are an expert in TypeScript, Node.js, React, React Router, Vite, and Tailwind, with a deep understanding of best practices and performance optimization techniques in these technologies.
+
+Code Style and Structure
+- Write concise, maintainable, and technically accurate TypeScript code with relevant examples.
+- Use functional and declarative programming patterns; avoid classes.
+- Favor iteration and modularization to adhere to DRY principles and avoid code duplication.
+- Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError).
+- Organize files systematically: each file should contain only related content, such as exported components, sub-components, helpers, static content, and types.
+- Use the React TypeScript Style Guide as a reference.
+- Use the file "./style-guides/react-typescript-style-guide.md" as a reference.
+- Use custom hooks with the "use" prefix and descriptive naming whenever there are more than 2 useEffects in a component, or the hook is used in more than 2 components, and don't hesitate to add related hooks and const variables into the custom hook, like useState() or useRef()
+- When using async functions, avoid blocking unless it's necessary.
+- If blocking is necessary for the async functions, use the await keyword to wait for the function to complete.
+- Prefer the use of ContextAPI for state management, and use the useContext hook to access the context.
+
+Naming Conventions
+- Use lowercase with underscores for directories (e.g., components/auth_wizard).
+- Favor named exports for functions.
+
+TypeScript Usage
+- Use TypeScript for all code; prefer interfaces over types for their extendability and ability to merge.
+- Use functional components with TypeScript interfaces.
+- Use the useQuery hook to fetch data from the database.
+- Use the useMutation hook to create, update, or delete data in the database.
+- Use the useAuth hook to authenticate the user.
+- Use the useStorage hook to store data in the browser's local storage.
+
+Syntax and Formatting
+- Prefer arrow functions over function declarations.
+- Use the "function" keyword for pure functions to benefit from hoisting and clarity when needed, but prefer arrow functions.
+- Functions that do not require data from the component should be defined outside of the component, in their own file, or a utility file with similar functions.
+
+UI and Styling
+- Use Tailwind for components and styling.
+- Implement responsive design with Tailwind CSS; use a mobile-first approach.
+
+Performance Optimization
+- Wrap asynchronous components in Suspense with a fallback UI.
+- Use dynamic loading for non-critical components.
+- Optimize images: include size data, implement lazy loading.
+- Implement an optimized chunking strategy during the Vite build process, such as code splitting, to generate smaller bundle sizes.
+
+Key Conventions
+- Implement lazy loading for non-critical components.
+- Optimize images: include size data, implement lazy loading.
+- Implement an optimized chunking strategy during the Vite build process, such as code splitting, to generate smaller bundle sizes.
+
+Code Review
+- Review code for performance, readability, and adherence to best practices.
+- Ensure all components and functions are optimized for performance and maintainability.
+- Check for unnecessary re-renders and optimize them.
+- Implement lazy loading for non-critical components.
+- Optimize images: include size data, implement lazy loading.
+- Implement an optimized chunking strategy during the Vite build process, such as code splitting, to generate smaller bundle sizes.
+
+Best Practices
+- Implement lazy loading for non-critical components.
+- Optimize images: include size data, implement lazy loading.
+- Implement an optimized chunking strategy during the Vite build process, such as code splitting, to generate smaller bundle sizes.
+
+Style Guide:
+{
+  "formatter": {
+    "indentSize": 2,
+    "lineWidth": 140
+  },
+  "generation": {
+    "react": {
+      "componentStyle": "arrow",
+      "defaultExport": false,
+      "propsInterface": true,
+      "strictProps": true,
+      "componentReturn": "ReactElement"
+    }
+  },
+  "templates": {
+    "reactComponent": {
+      "path": "src/components/${name}.tsx",
+      "template": "import { type ReactElement } from 'react';\n\ninterface ${name}Props {\n  // Add props here\n}\n\nexport const ${name} = ({ ...props }: ${name}Props): ReactElement => {\n  return (\n    <div>\n      {/* Component content */}\n    </div>\n  );\n};\n"
+    },
+    "reactHook": {
+      "path": "src/hooks/use${name}.ts",
+      "template": "import { useState, useEffect } from 'react';\n\nexport const use${name} = () => {\n  // Hook logic here\n};\n"
+    }
+  },
+  "conventions": {
+    "fileNaming": "snake_case",
+    "componentNaming": "PascalCase",
+    "hookNaming": "camelCase"
+  },
+  "imports": {
+    "react": {
+      "preferred": ["useState", "useEffect", "useCallback", "useMemo", "type ReactElement"],
+      "align": true,
+      "sort": true
+    },
+    "general": {
+      "sort": true,
+      "grouping": [
+        "^react",
+        "^@/",
+        "^[./]"
+      ]
+    }
+  },
+  "tailwind": {
+    "sortClasses": true,
+    "classesOrder": [
+      "position",
+      "display",
+      "flexbox",
+      "grid",
+      "spacing",
+      "sizing",
+      "typography",
+      "backgrounds",
+      "borders",
+      "effects",
+      "transitions",
+      "transforms",
+      "interactivity"
+    ],
+    "conditionalClassPattern": {
+      "base": ["Always applied classes first"],
+      "conditional": ["Conditional classes second"],
+      "responsive": ["Responsive classes last"]
+    }
+  },
+  "typescript": {
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "preferTypeImports": true
+  },
+  "examples": {
+    "component": [
+      {
+        "name": "Button",
+        "code": "import { type ReactElement, ReactNode } from 'react';\n\ninterface ButtonProps {\n  variant?: 'primary' | 'secondary';\n  onClick?: () => void;\n  children: ReactNode;\n}\n\nexport const Button = ({ \n  variant = 'primary',\n  onClick,\n  children \n}: ButtonProps): ReactElement => {\n  return (\n    <button\n      onClick={onClick}\n      className={`px-4 py-2 rounded-md ${variant === 'primary' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-800'}`}\n    >\n      {children}\n    </button>\n  );\n};\n"
+      },
+      {
+        "name": "Card",
+        "code": "import { type ReactElement } from 'react';\n\ninterface CardProps {\n  title: string;\n  content: string;\n  className?: string;\n}\n\nexport const Card = ({ \n  title,\n  content,\n  className = ''\n}: CardProps): ReactElement => {\n  return (\n    <div className={`rounded-lg shadow-md p-4 ${className}`}>\n      <h2 className=\"text-xl font-bold mb-2\">{title}</h2>\n      <p className=\"text-gray-600\">{content}</p>\n    </div>\n  );\n};\n"
+      }
+    ]
+  }
+}
+(edited)
+1:02
+Style Guide:
+# React TypeScript Style Guide
+
+## Component Structure
+
+### File Organization
+
+```typescript
+// 1. Imports
+import { type ReactElement, type PropsWithChildren } from 'react';
+import { useCallback, useState } from 'react';
+
+// 2. Types and Interfaces
+interface ComponentProps {
+  /** Document your props */
+  title: string;
+}
+
+// 3. Constants/Utils (component-specific)
+const ANIMATION_DURATION = 200;
+const formatTitle = (title: string): string => title.toUpperCase();
+
+// 4. Component Definition
+export const Component = ({ title }: PropsWithChildren<ComponentProps>): ReactElement => {
+  // 5. Hooks
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  // 6. Derived State
+  const displayTitle = formatTitle(title);
+
+  // 7. Event Handlers
+  const handleClick = useCallback(() => {
+    setIsOpen(prev => !prev);
+  }, []);
+
+  // 8. Main Render
+  return (
+    <div>
+      <header className="flex items-center justify-between">
+        <h2>{displayTitle}</h2>
+      </header>
+      <main>{children}</main>
+    </div>
+  );
+};
+```
+
+## Best Practices
+
+### Type Safety
+
+1. **Prop Types**
+
+   ```typescript
+   // ✅ Good
+   import { MouseEvent, ReactNode, HTMLButtonElement } from 'react';
+
+   interface ButtonProps {
+     variant: 'primary' | 'secondary';
+     size?: 'sm' | 'md' | 'lg';
+     onClick: (event: MouseEvent<HTMLButtonElement>) => void;
+     children: ReactNode;
+   }
+
+   // ❌ Bad
+   interface ButtonProps {
+     variant: string; // Too loose
+     size: string; // Too loose
+     onClick: any; // Avoid 'any'
+     children: any; // Avoid 'any'
+   }
+   ```
+
+2. **Event Handlers**
+
+   ```typescript
+   // ✅ Good
+   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
+     setValue(event.target.value);
+   };
+
+   // ❌ Bad
+   const handleChange = (e) => {
+     // Missing type annotation
+     setValue(e.target.value);
+   };
+   ```
+
+### Hooks Usage
+
+1. **Dependencies**
+
+   ```typescript
+   // ✅ Good
+   const memoizedValue = useMemo(
+     () => expensiveCalculation(prop1, prop2),
+     [prop1, prop2]
+   );
+
+   // ❌ Bad
+   const memoizedValue = useMemo(
+     () => expensiveCalculation(prop1, prop2),
+     [] // Missing dependencies
+   );
+   ```
+
+2. **Custom Hooks**
+
+   ```typescript
+   // ✅ Good
+   export const useWindowSize = () => {
+     const [size, setSize] = useState<{ width: number; height: number }>({
+       width: window.innerWidth,
+       height: window.innerHeight,
+     });
+
+     useEffect(() => {
+       const handleResize = () => {
+         setSize({ width: window.innerWidth, height: window.innerHeight });
+       };
+
+       window.addEventListener('resize', handleResize);
+       return () => window.removeEventListener('resize', handleResize);
+     }, []);
+
+     return size;
+   };
+   ```
+
+### TailwindCSS Patterns
+
+1. **Class Organization**
+
+   ```tsx
+   // ✅ Good
+   <div className="hover:shadow-md text-sm bg-white flex w-full p-4 relative border">
+
+   // ❌ Bad
+   <div
+     className={`
+       relative flex items-center   /* Layout */
+       w-full max-w-md p-4         /* Sizing/Spacing */
+       text-sm font-medium         /* Typography */
+       bg-white                    /* Background */
+       border border-gray-200      /* Border */
+       rounded-lg shadow-sm        /* Effects */
+       transition-all duration-200 /* Animation */
+       hover:shadow-md             /* Interactions */
+     `}
+   >
+   ```
+
+2. **Responsive Design**
+
+```tsx
+// ✅ Good
+<div className="sm:space-x-4 flex-col space-y-4 sm:flex-row">
+
+// ❌ Bad
+<div className="
+  flex-col sm:flex-row    /* Stack on mobile, row on desktop */
+  space-y-4 sm:space-y-0  /* Vertical spacing on mobile only */
+  sm:space-x-4           /* Horizontal spacing on desktop */
+">
+```
+
+### State Management
+
+1. **Local State**
+
+   ```typescript
+   // ✅ Good
+   interface FormState {
+     username: string;
+     password: string;
+     errors: Record<string, string>;
+   }
+
+   const defaultFormState: FormState = {
+     username: '',
+     password: '',
+     errors: {},
+   };
+
+   const [formState, setFormState] = useState<FormState>(defaultFormState);
+
+   // ❌ Bad
+   const [username, setUsername] = useState('');
+   const [password, setPassword] = useState('');
+   const [errors, setErrors] = useState({});
+   ```
+
+2. **Complex State Updates**
+
+```typescript
+// ✅ Good
+const updateField = useCallback((field: keyof FormState, value: string) => {
+  setFormState((prev) => ({
+    ...prev,
+    [field]: value,
+    errors: { ...prev.errors, [field]: validateField(field, value) },
+  }));
+}, []);
+
+// ❌ Bad
+const updateField = (field, value) => {
+  const newState = formState; // Mutating reference
+  newState[field] = value;
+  setFormState(newState);
+};
+```
+
+## Performance Optimization
+
+### Memoization
+
+```typescript
+// ✅ Good
+export const ExpensiveComponent = memo(({ data, onAction }: Props) => {
+  return (
+    // Component content
+  );
+}, (prevProps, nextProps) => {
+  return isEqual(prevProps.data, nextProps.data);
+});
+
+// ❌ Bad - Memoizing without proper comparison
+export const ExpensiveComponent = memo(({ data, onAction }: Props) => {
+  return (
+    // Component content
+  );
+});
+```
+
+### Render Optimization
+
+```typescript
+// ✅ Good
+const MyComponent = ({ items }: Props): ReactElement => {
+  // Memoize expensive transformations
+  const processedItems = useMemo(() => items.map(processItem), [items]);
+
+  // Memoize callback handlers
+  const handleClick = useCallback((id: string) => {
+    // Handle click
+  }, []);
+
+  return (
+    <ul>
+      {processedItems.map((item) => (
+        <ListItem
+          key={item.id}
+          data={item}
+          onClick={handleClick}
+        />
+      ))}
+    </ul>
+  );
+};
+```
+
+## Testing Patterns
+
+```typescript
+// ✅ Good
+describe('Component', () => {
+  it('renders with required props', () => {
+    const { getByText } = render(
+      <Component title="Test Title">
+        Content
+      </Component>
+    );
+
+    expect(getByText('Test Title')).toBeInTheDocument();
+    expect(getByText('Content')).toBeInTheDocument();
+  });
+
+  it('handles user interactions', () => {
+    const handleClick = jest.fn();
+    const { getByRole } = render(
+      <Component onClick={handleClick}>
+        Click Me
+      </Component>
+    );
+
+    fireEvent.click(getByRole('button'));
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+});
+```

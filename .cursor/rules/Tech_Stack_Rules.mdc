@@ -1,0 +1,189 @@
+---
+description: Tech Stack Rules and Best Practices
+globs: *
+---
+# Tech Stack Rules and Best Practices
+
+This document references our finalized choices in [tech-stack.md](mdc:docs/project-info/tech-stack.md) and outlines the best practices, limitations, conventions, and important considerations for our selected technology stack. It is intended as a reference for developers to ensure consistency, maintainability, and high-quality implementation throughout the project.
+
+---
+
+## 1. Frontend: React with TypeScript
+
+### Best Practices
+- **Component Structure:**  
+  - Organize components by feature rather than by type.  
+  - Keep components small, focused, and reusable.
+- **Type Safety:**  
+  - Utilize TypeScript for static type checking.  
+  - Define and maintain clear interfaces and types for props, state, and API responses.
+- **State Management:**  
+  - Use React’s Context API or state management libraries (like Redux) where necessary.  
+  - Keep local component state minimal and prefer lifting state up only when needed.
+- **Code Organization:**  
+  - Follow a consistent folder structure (e.g., components, hooks, services, assets).  
+  - Maintain separation of concerns (UI components vs. business logic).
+- **Testing:**  
+  - Write unit tests using frameworks like Jest and React Testing Library.  
+  - Focus on testing component behavior and integration rather than implementation details.
+
+### Limitations & Pitfalls
+- **Complexity Overhead:**  
+  - Overusing TypeScript can sometimes slow development if type definitions become too complex.
+- **Performance:**  
+  - Watch for unnecessary re-renders; use `React.memo` and hooks like `useCallback` or `useMemo` to optimize performance.
+- **Tooling & Config:**  
+  - Ensure that your build tools (Webpack, Babel, etc.) are configured to support TypeScript and handle module resolution cleanly.
+
+---
+
+## 2. Backend/API: AWS Lambda with API Gateway
+
+### Best Practices
+- **Function Design:**  
+  - Keep Lambda functions single-purpose and stateless.  
+  - Use microservices architecture to break down functionality.
+- **API Design:**  
+  - Follow RESTful or event-driven design patterns as appropriate.  
+  - Use proper HTTP status codes and error messages.
+- **Deployment & Monitoring:**  
+  - Leverage AWS Amplify for streamlined deployment.  
+  - Use CloudWatch for logging and performance monitoring.
+- **Security:**  
+  - Apply least privilege principles using IAM roles.  
+  - Validate all input to prevent injection attacks.
+
+### Limitations & Pitfalls
+- **Cold Starts:**  
+  - Be aware of cold start delays in Lambda functions; consider using provisioned concurrency if latency is critical.
+- **Execution Time:**  
+  - Lambda functions have a maximum execution time (currently 15 minutes). Ensure that tasks fit within this limit or are split into smaller functions.
+- **Resource Limits:**  
+  - Monitor memory and CPU usage to avoid throttling.  
+  - Test functions under load to ensure scalability.
+- **API Gateway Limits:**  
+  - Familiarize yourself with API Gateway’s rate limits and payload size restrictions.
+
+---
+
+## 3. AI Implementation: AWS Bedrock
+
+### Best Practices
+- **Integration:**  
+  - Use AWS Bedrock’s managed services to integrate AI models seamlessly.  
+  - Ensure robust error handling and fallback mechanisms when calling AI APIs.
+- **Model Selection:**  
+  - Choose models that best fit the specific content strategy and data analysis requirements.
+- **Data Security:**  
+  - Ensure data passed to AI services is properly sanitized and secured.
+- **Monitoring:**  
+  - Monitor API usage and performance through AWS CloudWatch or similar tools.
+
+### Limitations & Pitfalls
+- **Cost Considerations:**  
+  - Monitor costs closely, as AI service usage can become expensive with high volume.
+- **Latency:**  
+  - Account for potential latency when making AI API calls; design asynchronous workflows where possible.
+- **Versioning:**  
+  - Keep track of model versions and updates to avoid unexpected behavior when models are updated by AWS.
+
+---
+
+## 4. Databases & Data Storage: AWS DynamoDB
+
+### Best Practices
+- **Data Modeling:**  
+  - Design your tables with access patterns in mind; use partition keys and secondary indexes appropriately.
+  - Consider data denormalization to optimize query performance.
+- **Scalability:**  
+  - Use on-demand capacity or provisioned capacity with auto-scaling as required.
+- **Security:**  
+  - Implement fine-grained access control using IAM policies.
+- **Backup & Recovery:**  
+  - Use DynamoDB backups and enable point-in-time recovery to safeguard data.
+
+### Limitations & Pitfalls
+- **Query Limitations:**  
+  - Understand that DynamoDB is not optimized for complex queries (joins, aggregations).  
+  - Use AWS Lambda functions or additional processing for complex data transformations.
+- **Cost Management:**  
+  - Monitor read/write capacity usage and adjust settings to avoid cost overruns.
+- **Consistency:**  
+  - Be mindful of eventual consistency in read operations; use strongly consistent reads where necessary.
+
+---
+
+## 5. DevOps & CI/CD: AWS Amplify
+
+### Best Practices
+- **Integrated Workflow:**  
+  - Use Amplify’s CLI and console for streamlined deployments across frontend and backend.
+  - Set up environments for development, staging, and production.
+- **Automated Testing & Builds:**  
+  - Integrate automated tests into your CI/CD pipeline.
+  - Use version control branching strategies to manage deployments.
+- **Monitoring & Rollbacks:**  
+  - Monitor deployments for errors and set up automatic rollback strategies.
+- **Configuration Management:**  
+  - Securely manage environment variables and secrets through AWS Secrets Manager or Amplify’s configuration.
+
+### Limitations & Pitfalls
+- **Vendor Lock-In:**  
+  - Be aware of the deep AWS integration, which might complicate migrations to other platforms.
+- **Complexity:**  
+  - While Amplify simplifies many tasks, it can abstract away details that may need customization later.
+- **Deployment Delays:**  
+  - Large projects might experience longer deployment times; plan for staging and testing cycles accordingly.
+
+---
+
+## 6. Authentication: AWS Cognito
+
+### Best Practices
+- **User Management:**  
+  - Use Cognito for handling user sign-up, sign-in, and multi-factor authentication.
+  - Leverage Cognito’s built-in support for social identity providers if needed.
+- **Security:**  
+  - Configure strong password policies and secure token storage.
+  - Use Cognito triggers and Lambda functions for custom authentication flows or validation.
+- **Integration:**  
+  - Integrate with AWS Amplify for seamless front-end authentication management.
+
+### Limitations & Pitfalls
+- **Complexity in Customization:**  
+  - Customizing Cognito workflows can be challenging and may require additional Lambda functions.
+- **Documentation Gaps:**  
+  - Some edge-case scenarios might not be well-documented; expect a learning curve.
+- **Token Management:**  
+  - Ensure proper management of tokens and handle token expiration gracefully on the client side.
+
+---
+
+## 7. UI Components & Styling: Bootstrap (via React-Bootstrap)
+
+### Best Practices
+- **Component Consistency:**  
+  - Use React-Bootstrap components to ensure a consistent look and feel across the application.
+  - Follow Bootstrap’s grid system and component classes for responsive design.
+- **Integration with React:**  
+  - Ensure that components are used in a way that respects React’s component lifecycle and state management.
+- **Accessibility:**  
+  - Utilize Bootstrap’s built-in accessibility features, and test components to ensure they meet accessibility standards.
+
+### Limitations & Pitfalls
+- **Design Constraints:**  
+  - Bootstrap’s default styling may feel generic; customization is key to maintaining a unique brand identity.
+- **Overhead:**  
+  - Avoid importing the entire Bootstrap library if only a subset of components is needed; consider tree-shaking or custom builds.
+- **Component Conflicts:**  
+  - Ensure that any additional custom styles do not conflict with Bootstrap’s core styles.
+- **Calendar Component Integration:**  
+  - When integrating third-party calendar components, ensure that their styling can be harmonized with Bootstrap’s theme.
+
+---
+
+## Summary
+
+This tech stack is designed for scalability, maintainability, and rapid development. Adhering to these best practices, being mindful of limitations, and avoiding common pitfalls will ensure a smooth development process and a robust end product. Regular reviews and updates to these guidelines are recommended as the project evolves.
+
+---
