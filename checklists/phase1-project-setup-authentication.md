@@ -5,7 +5,7 @@ This phase focuses on establishing the project foundation and implementing user 
 ## 1. Project Initialization
 
 ### Frontend Tasks
-- [ ] Create React application with TypeScript
+- [ ] Create React application with TypeScript - done
 - [ ] Set up folder structure according to codebase best practices
 - [ ] Configure React Router DOM for navigation
 - [ ] Install and configure React-Bootstrap
