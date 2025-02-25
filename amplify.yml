@@ -5,14 +5,23 @@ applications:
       phases:
         preBuild:
           commands:
-            - npm install
+            - npm ci
+            - npm install -g npm@latest
+            - npm install --platform=linux --arch=x64 @rollup/rollup-linux-x64-gnu
         build:
           commands:
             - npm run build
       artifacts:
-        baseDirectory: build
+        baseDirectory: dist
         files:
           - '**/*'
       cache:
         paths:
-          - node_modules/**/* 
+          - node_modules/**/*
+  - appRoot: packages/backend
+    backend:
+      phases:
+        build:
+          commands:
+            - npm ci
+            - npm run amplify-push 
